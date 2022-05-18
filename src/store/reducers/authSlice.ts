@@ -1,15 +1,8 @@
 import { IAuthResponse } from '../../models/IAuthResponse';
-import { IUser } from "../../models/IUser";
+import IUserState from "../../models/IUserState";
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface UserState {
-  data: IUser;
-  isLoading: boolean;
-  isAuth: false;
-  error: string;
-}
-
-const initialState: UserState = {
+const initialState: IUserState = {
   data: null,
   isLoading: false,
   isAuth: false,
@@ -26,7 +19,6 @@ const authSlice = createSlice({
       state.data = action.payload.data;
     },
     checkAuth(state, action: PayloadAction<IAuthResponse>) {
-      console.log(action.payload);
 
       if (action.payload) {
         state.isAuth = true;

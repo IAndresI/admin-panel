@@ -1,5 +1,22 @@
 @import "../node_modules/normalize.css/normalize.css";
 
+:root {
+  --background-color-secondary: #1F2128;
+  --background-color: #0f0f12;
+  --color-gray: #313542;
+  --color-light-gray: #E8EDF2;
+  --color-purple: #7364DB;
+  --color-purple-dark: #6B4FB0;
+  --text-color-secondary: #707078;
+  --text-color: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --background-color-secondary: #FFFFFF;
+  --background-color: #f5f5fa;
+  --text-color: #000000;
+}
+
 * {
   font-family: 'Nunito', sans-serif;
 }

@@ -1,4 +1,3 @@
-import { RootState } from './../store/store';
 import { IAuthResponse } from '../models/IAuthResponse';
 import { IUser } from '../models/IUser';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
@@ -9,7 +8,7 @@ export const authAPI = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL + '/user',
     credentials: 'include',
-    prepareHeaders: (headers, { getState }) => {
+    prepareHeaders: (headers) => {
 
       const token = localStorage.getItem('token');
       if (token) {
@@ -55,12 +54,10 @@ export const authAPI = createApi({
         }
       })
     }),
-    auth: build.mutation<IAuthResponse, null>({
-      query: () => ({
-        url: '/refresh'
-      })
+    auth: build.query<IAuthResponse, null>({
+      query: () => '/refresh'
     })
   })
 })
 
-export const { useFetchAllUsersQuery, useLoginMutation, useLogoutMutation, useRegistrationMutation, useAuthMutation } = authAPI;
+export const { useFetchAllUsersQuery, useLoginMutation, useLogoutMutation, useRegistrationMutation, useAuthQuery } = authAPI;

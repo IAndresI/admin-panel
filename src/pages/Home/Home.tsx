@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <Link to="/">Home</Link>
       <Link to="list">list</Link>
-      <Link to="login">login</Link>
+      <Link to="auth/login">login</Link>
     </div>
   )
 }
