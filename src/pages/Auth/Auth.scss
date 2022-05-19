@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--background-color);
   color: var(--text-color);
 
   &__inner {
@@ -15,7 +14,8 @@
     border-radius: 15px;
     background-color: var(--background-color-secondary);
     border: 1px solid var(--color-gray);
-    min-width: 25%;
+    width: 100%;
+    max-width: 400px;
   }
 
   &__form {
@@ -33,6 +33,15 @@
 
     &::after, &::before {
       display: none;
+    }
+  }
+
+  &__form-double-input {
+    display: flex;
+    justify-content: space-between;
+
+    div:first-child {
+      margin-right: 15px;
     }
   }
 
@@ -95,6 +104,7 @@
   &__link-container {
     display: block;
     margin-left: auto;
+    color: var(--text-color-secondary);
     &--center {
       display: flex;
       margin-left: 0;
@@ -110,5 +120,14 @@
   &__link {
     display: flex;
     font-size: 10;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .auth {
+    margin: 0 10px;
+    &__inner {
+      padding:  30px 10px;
+    }
   }
 }

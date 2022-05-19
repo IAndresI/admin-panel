@@ -3,7 +3,7 @@ import { useLoginMutation } from '../../../services/authService'
 import { useAppDispatch } from '../../../store/hooks/redux'
 import { authActions } from '../../../store/reducers/authSlice'
 import Input from '../../Input/TextInput';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PasswordInput from '../../Input/PasswordInput'
 import Button from '../../Button/Button';
 
@@ -18,23 +18,24 @@ export default function Login() {
   })
   const [login, { data, isLoading, error, isError }] = useLoginMutation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const makeLogin = async () => {
-    await login({ emailOrUserName, password: password });
+    await login({ emailOrUserName, password: password })
   }
 
   useEffect(() => {
     if (!data) return;
 
     dispatch(authActions.login(data))
-  }, [useAppDispatch, data])
+    navigate("/");
+  }, [dispatch, data])
 
   useEffect(() => {
-    if (error) {
+    if (error || isError) {
       console.log({ ...error });
-
     }
-  }, [error])
+  }, [error, isError])
 
   return (
     <div className="auth__inner">
@@ -62,8 +63,8 @@ export default function Login() {
           <PasswordInput password={password} setPassword={setPassword} />
         </label>
         <Button
+          disabled={isLoading}
           onClick={() => makeLogin()}
-          type="button"
         >
           Login
         </Button>

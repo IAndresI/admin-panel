@@ -2,6 +2,7 @@ import { IAuthResponse } from '../models/IAuthResponse';
 import { IUser } from '../models/IUser';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ILogin } from '../models/ILogin';
+import IRegistrationData from '../models/IRegistrationData';
 
 export const authAPI = createApi({
   reducerPath: 'authAPI',
@@ -36,12 +37,12 @@ export const authAPI = createApi({
         }
       })
     }),
-    registration: build.mutation<IAuthResponse, IUser>({
-      query: (user: IUser) => ({
+    registration: build.mutation<IAuthResponse, IRegistrationData>({
+      query: (user: IRegistrationData) => ({
         url: '/register',
         method: 'POST',
         body: {
-          user
+          ...user
         }
       })
     }),

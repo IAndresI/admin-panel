@@ -17,11 +17,12 @@ const StyledButton = styled(MUIButton)(({ theme }) => ({
   }
 }));
 
-export default function Button({ children, onClick }) {
+export default function Button({ children, onClick, disabled = false }) {
   return (
     <StyledButton
       className="auth__btn"
       variant="outlined"
+      disabled={disabled}
       onClick={onClick}
     >
       {children}

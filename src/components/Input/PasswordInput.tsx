@@ -6,7 +6,8 @@ import React from 'react'
 const StyledInput = styled(OutlinedInput)(({ theme }) => ({
   '.MuiOutlinedInput-input, .MuiOutlinedInput-notchedOutline': {
     color: "var(--text-color)",
-    border: "none"
+    border: "none",
+    transition: 'all .3s ease-in-out',
   },
   borderRadius: 10,
   backgroundColor: "transparent",
