@@ -29,6 +29,13 @@ const authSlice = createSlice({
         state.isAuth = false;
         state.data = null;
       }
+    },
+    logout(state) {
+      state.isAuth = false;
+      state.data = null;
+      state.error = '';
+      state.isLoading = false;
+      localStorage.removeItem('token');
     }
   }
 })

@@ -46,13 +46,11 @@ export const authAPI = createApi({
         }
       })
     }),
-    logout: build.mutation<IAuthResponse, IUser>({
-      query: (user: IUser) => ({
+    logout: build.mutation<IAuthResponse, null>({
+      query: () => ({
         url: '/logout',
         method: 'POST',
-        body: {
-          user
-        }
+        body: {}
       })
     }),
     auth: build.query<IAuthResponse, null>({

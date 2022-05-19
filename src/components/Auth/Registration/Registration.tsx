@@ -44,7 +44,7 @@ export default function Registration() {
 
     dispatch(authActions.login(data))
     navigate("/")
-  }, [dispatch, data])
+  }, [dispatch, data, navigate])
 
   useEffect(() => {
     console.log(error);

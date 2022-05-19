@@ -1,0 +1,21 @@
+.home {
+  &__logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    color: var(--text-color);
+    margin-left: 15px;
+  }
+
+  &__button {
+    z-index: 13;
+    position: absolute;
+  }
+
+  &__search {
+    margin-left: 50px;
+  }
+}

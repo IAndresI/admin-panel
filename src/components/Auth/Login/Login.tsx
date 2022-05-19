@@ -29,7 +29,7 @@ export default function Login() {
 
     dispatch(authActions.login(data))
     navigate("/");
-  }, [dispatch, data])
+  }, [dispatch, data, navigate])
 
   useEffect(() => {
     if (error || isError) {
