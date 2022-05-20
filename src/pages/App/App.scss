@@ -1,0 +1,14 @@
+.app {
+  background-color: var(--background-color);
+  min-height: 100vh;
+}
+
+.panel {
+  color: var(--text-color);
+
+  &__main {
+    background-color: var(--background-color-secondary);
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+}

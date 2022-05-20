@@ -1,9 +1,14 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import HomeLayout from '../../components/HomeLayout/HomeLayout'
 import { useAppSilector } from '../../store/hooks/redux';
+import Dashboard from '../Dashboard/Dashboard';
+import Hotels from '../Hotels/Hotels';
+import Rooms from '../Rooms/Rooms';
+import Users from '../Users/Users';
+import Companys from '../Companys/Companys';
 
-export default function Home() {
+export default function Home({ darkTheme }) {
 
   const isAuth = useAppSilector(state => state.user.isAuth);
   const navigate = useNavigate();
@@ -13,9 +18,16 @@ export default function Home() {
   }
 
   return (
-    <HomeLayout>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi blanditiis voluptas, dolorum nihil in maiores recusandae sequi fugit excepturi debitis commodi omnis ducimus vero accusantium laudantium. Quia temporibus eligendi error?
-      Iure, corrupti eaque sunt autem obcaecati ratione reiciendis recusandae et quod consequuntur excepturi ipsam porro voluptate dolores illum totam voluptatem non? Architecto, odit iusto. Eos rerum fugit autem. Fuga, enim!
+    <HomeLayout darkTheme={darkTheme}>
+      <div className="app__dashboard dashboard panel">
+        <Routes>
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/companys" element={<Companys />} />
+          <Route path="*" element={<Dashboard />} />
+        </Routes>
+      </div>
     </HomeLayout>
   )
 }
