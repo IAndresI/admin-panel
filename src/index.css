@@ -5,10 +5,14 @@
   --background-color: #0f0f12;
   --color-gray: #313542;
   --color-light-gray: #646471;
-  --color-purple: #7364DB;
+  --color-purple: #7747CA;
   --color-purple-dark: #6B4FB0;
   --text-color-secondary: #707078;
   --text-color: #ffffff;
+  --color-light-green: #5EEA8D;
+  --color-blue: #2775FF;
+  --color-pink: #FB7BB8;
+  --color-red: #E23738;
 }
 
 .app[data-theme="dark"] {

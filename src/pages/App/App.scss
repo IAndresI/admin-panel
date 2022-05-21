@@ -7,8 +7,50 @@
   color: var(--text-color);
 
   &__main {
+    
+  }
+
+  &__row {
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  &__item {
     background-color: var(--background-color-secondary);
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 20px 20px;
+    flex: 1;
+  }
+
+  &__item-title {
+
+    font-size: 18px;
+    margin: 0;
+    border-bottom: 1px solid var(--color-light-gray);
+    margin-bottom: 10px;
+    
+    &--secondary {
+      color: var(--color-light-gray);
+      border-bottom: none;
+    }
+  }
+
+  &__icon-container{
+    padding: 10px;
+    border-radius: 10px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+  }
+
+  &__amaunt {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &__percent {
+    margin-left: auto;
   }
 }

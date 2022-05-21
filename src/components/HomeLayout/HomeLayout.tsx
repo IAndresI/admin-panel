@@ -14,8 +14,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
-import './HomeLayout.scss';
 import { useLogoutMutation } from '../../services/authService';
 import { useAppDispatch } from '../../store/hooks/redux';
 import { authActions } from '../../store/reducers/authSlice';
@@ -27,130 +25,9 @@ import WorkIcon from '@mui/icons-material/Work';
 import { useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 
+import './HomeLayout.scss';
+
 const drawerWidth = 240;
-
-const openedMixin = (theme) => ({
-  width: drawerWidth,
-  transition: theme.transitions.create('all', {
-    easing: theme.transitions.easing.sharp,
-    duration: ".3s",
-  }),
-  overflowX: 'hidden',
-});
-
-const closedMixin = (theme) => ({
-  transition: theme.transitions.create('all', {
-    easing: theme.transitions.easing.sharp,
-    duration: ".3s",
-  }),
-  overflowX: 'hidden',
-  width: `calc(${theme.spacing(8.5)} + 1px)`,
-});
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  boxShadow: "none",
-  transition: theme.transitions.create('all', {
-    easing: theme.transitions.easing.sharp,
-    duration: ".3s",
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create("all", {
-      easing: theme.transitions.easing.sharp,
-      duration: ".3s",
-    }),
-  }),
-}));
-
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== 'open'
-})(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: 'nowrap',
-  boxSizing: 'border-box',
-  ...(open && {
-    ...openedMixin(theme),
-    '& .MuiDrawer-paper': {
-      ...openedMixin(theme),
-      borderRight: "1px solid var(--color-light-gray)",
-      backgroundColor: "var(--background-color-secondary)",
-    },
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-    '& .MuiDrawer-paper': {
-      ...closedMixin(theme),
-      borderRight: "1px solid var(--color-light-gray)",
-      backgroundColor: "var(--background-color-secondary)",
-    },
-  }),
-}),
-);
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: "var(--background-color)",
-  '&:hover': {
-    backgroundColor: "var(--background-color)",
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('all'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
-}));
-
-const StyledSearch = styled(Search)(({ theme }) => ({
-  color: 'var(--color-light-gray)',
-  marginLeft: 30,
-  borderRadius: 10,
-  '& .MuiInputBase-input': {
-    width: 400,
-    paddingTop: 15,
-    paddingBottom: 15,
-    borderRadius: 20
-  }
-}));
 
 const adminTabs = [
   { title: 'Dashboard', icon: <DashboardIcon /> },
@@ -453,3 +330,126 @@ export default function HomeLayout({ children, darkTheme }) {
     </Box >
   )
 }
+
+const openedMixin = (theme) => ({
+  width: drawerWidth,
+  transition: theme.transitions.create('all', {
+    easing: theme.transitions.easing.sharp,
+    duration: ".3s",
+  }),
+  overflowX: 'hidden',
+});
+
+const closedMixin = (theme) => ({
+  transition: theme.transitions.create('all', {
+    easing: theme.transitions.easing.sharp,
+    duration: ".3s",
+  }),
+  overflowX: 'hidden',
+  width: `calc(${theme.spacing(8.5)} + 1px)`,
+});
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+  boxShadow: "none",
+  transition: theme.transitions.create('all', {
+    easing: theme.transitions.easing.sharp,
+    duration: ".3s",
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create("all", {
+      easing: theme.transitions.easing.sharp,
+      duration: ".3s",
+    }),
+  }),
+}));
+
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== 'open'
+})(({ theme, open }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+  whiteSpace: 'nowrap',
+  boxSizing: 'border-box',
+  ...(open && {
+    ...openedMixin(theme),
+    '& .MuiDrawer-paper': {
+      ...openedMixin(theme),
+      borderRight: "1px solid var(--color-light-gray)",
+      backgroundColor: "var(--background-color-secondary)",
+    },
+  }),
+  ...(!open && {
+    ...closedMixin(theme),
+    '& .MuiDrawer-paper': {
+      ...closedMixin(theme),
+      borderRight: "1px solid var(--color-light-gray)",
+      backgroundColor: "var(--background-color-secondary)",
+    },
+  }),
+}),
+);
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: "var(--background-color)",
+  '&:hover': {
+    backgroundColor: "var(--background-color)",
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('all'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+}));
+
+const StyledSearch = styled(Search)(({ theme }) => ({
+  color: 'var(--color-light-gray)',
+  marginLeft: 30,
+  borderRadius: 10,
+  '& .MuiInputBase-input': {
+    width: 400,
+    paddingTop: 15,
+    paddingBottom: 15,
+    borderRadius: 20
+  }
+}));
